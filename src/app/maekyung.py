@@ -7,7 +7,7 @@ import time
 from bs4 import BeautifulSoup
 
 def get_maekyung_msg(d_month, d_day) :
-    ''' {d_month}월 {d_day}일에 해당하는 매세지 조회 '''
+    """ {d_month}월 {d_day}일에 해당하는 매세지 조회 """
 
     news_dict = {}
     idx = 0
@@ -41,6 +41,6 @@ def get_maekyung_msg(d_month, d_day) :
                     content = soup.select_one('#content > div.content_left > div.view_txt')
                     return response.status_code, ('1.' + content.get_text().split('1.')[1])
                 else :
-                    return response.status_code, 'Err'
+                    return response.status_code, 'Err. Failed to get the article'
     else :
-        return response.status_code, 'Err. '
+        return response.status_code, 'Err. Failed to get the list.'
