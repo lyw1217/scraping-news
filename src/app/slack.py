@@ -28,16 +28,21 @@ def dbout(message, *args) :
     print(strbuf)
     slack.chat.post_message(CHANNEL_NAME, strbuf)
 
+# NOT USED
 def get_channel_list() :
     """ slack 채널 리스트를 가져온다. return value : dict """
     channel_list = slack.conversations.list()
     return channel_list
+# NOT USED
 
+# NOT USED
 def get_conv_history(id) :
     """ channel에서 id를 이용하여 대화 내용을 읽어온다. return value : list """
     msgs = slack.conversations.history(id)
     return msgs
+# NOT USED
 
+# NOT USED
 def slack_socket() :
     res = slack_sock.rtm.connect()
     endpoint = res.body['url']
@@ -58,3 +63,4 @@ def slack_socket() :
             print(e)
             break
     ws.close()
+# NOT USED

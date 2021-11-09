@@ -7,7 +7,7 @@ import time
 from bs4 import BeautifulSoup
 
 def get_maekyung_msg(d_month, d_day) :
-    """ {d_month}월 {d_day}일에 해당하는 매세지 조회 """
+    """ {d_month}월 {d_day}일에 해당하는 매.세.지 조회 """
 
     news_dict = {}
     idx = 0

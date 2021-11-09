@@ -15,7 +15,15 @@ def get_hankyung_issue_today() :
         html = response.content.decode('euc-kr', 'replace')
         soup = BeautifulSoup(html, 'html.parser')
         
-        print(soup.get_text())
-        # 각 block을 get_text() 후 파싱
+        td_list = soup.find_all('td', {'class' : 'stb-text-box'})
+        txt_list = [td.get_text() for td in td_list]
+        
+        for t in txt_list[:] :
+            if '이 뉴스레터를 카카오톡으로 공유하세요!' in t :
+                txt_list.remove(t)
+                break
+            
+        return response.status_code, '\r\n'.join(txt_list)
+
     else :
         return response.status_code, 'Err. Failed to get the Issue Today.'
