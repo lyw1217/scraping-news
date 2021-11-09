@@ -41,6 +41,6 @@ def get_maekyung_msg(d_month, d_day) :
                     content = soup.select_one('#content > div.content_left > div.view_txt')
                     return response.status_code, ('1.' + content.get_text().split('1.')[1])
                 else :
-                    return response.status_code, 'Err. Failed to get the article'
+                    return response.status_code, 'Err. Failed to get the M.S.G article'
     else :
-        return response.status_code, 'Err. Failed to get the list.'
+        return response.status_code, 'Err. Failed to get the M.S.G list.'
