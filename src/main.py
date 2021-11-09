@@ -1,47 +1,30 @@
+from os import stat
 from app import *
-from datetime import datetime
 from threading import Thread
-import time
 
-def maekyung() :
+def get_morning_news() :
     f_send = False
-    '''
-    channels = get_channel_list()
-    print(type(channels))
 
-    for channel in channels.body['channels'] :
-        print(channel)
-        if channels['name'] == CHANNEL_NAME :
-            id = channel['id']
-            break        
-
-    print(id)
-    '''
     while True :
         d_month  = datetime.now().month
         d_day    = datetime.now().day
         d_hour   = datetime.now().hour
         
-        # 8시 정각에 메시지 전송
-        if d_hour == 8 and f_send == False :
+        # 9시 정각에 매.세.지 전송
+        if d_hour == 9 and f_send == False :
             status, maekyung = get_maekyung_msg(d_month, d_day)
             if status == 200 :
                 dbout('\r\n' + maekyung)
-                f_send = True
             else :
-                dbout(f"Status : {status}\r\nMessage : {maekyung}")
-                f_send = True
-        elif d_hour == 9 :
+                dbout(f'\r\nStatus : {status}\nMessage : {maekyung}\n')
+            f_send = True
+        elif d_hour == 10 :
             f_send = False
 
-        status, maekyung = get_maekyung_msg(d_month, d_day)
-        if status == 200 :
-            dbout('\r\n' + maekyung)
-            f_send = True
         time.sleep(60)
 
 def crawling_news() :
-    th1 = Thread(target=maekyung)
+    th1 = Thread(target=get_morning_news)
     #th2 = Thread(target=slack_socket)
 
     th1.start()
