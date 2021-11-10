@@ -19,7 +19,7 @@ def get_hankyung_issue_today() :
         txt_list = [td.get_text() for td in td_list]
         
         for t in txt_list[:] :
-            if '이 뉴스레터를 카카오톡으로 공유하세요!' in t :
+            if '카카오톡으로 공유하세요' in t :
                 txt_list.remove(t)
                 break
             

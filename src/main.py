@@ -20,7 +20,7 @@ def get_morning_news() :
                         dbout('\r\n' + maekyung)
                     else :
                         dbout(f'\r\nStatus : {status}\nMessage : {maekyung}\n')
-                    flag = True
+                    f_send[key] = True
 
                 # 한국경제
                 elif key == 'hankyung' :
@@ -29,13 +29,13 @@ def get_morning_news() :
                         dbout('\r\n' + hankyung)
                     else :
                         dbout(f'\r\nStatus : {status}\nMessage : {hankyung}\n')
-                    flag = True
+                    f_send[key] = True
 
                 else :
                     dbout('Err. Wrong Key.')
                 time.sleep(1)
             elif d_hour == 10 :
-                flag = False
+                f_send[key] = False
 
         time.sleep(60)
 
