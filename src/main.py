@@ -1,9 +1,25 @@
 from app import *
 from threading import Thread
 
+''' Load Configuration '''
+if SYS_PLATFORM == 'Linux' or SYS_PLATFORM == 'Drawin':
+    CONFIG_PATH = os.path.join(ROOT_DIR, 'config/config.json')
+elif SYS_PLATFORM == 'Windows' :
+    CONFIG_PATH = os.path.join(ROOT_DIR, 'config\config.json')
+
+with open(CONFIG_PATH) as json_file :
+    configs = json.load(json_file)
+    f_send = {}
+
+    SEND_HOUR = int(configs['SEND_HOUR'])            
+    for n in configs['news'] :
+        if n['name'] == 'maekyung' :
+            f_send['maekyung']  = n['send_flag']
+        elif n['name'] == 'hankyung' :
+            f_send['hankyung']  = n['send_flag']
+''''''
+
 def get_morning_news() :
-    f_send = {'maekyung' : False ,
-              'hankyung' : False }
 
     while True :
         d_month  = datetime.now().month
@@ -12,7 +28,7 @@ def get_morning_news() :
         
         # 9시 정각에 뉴스 전송
         for key, flag in f_send.items() :
-            if d_hour == 9 and flag == False :
+            if d_hour == SEND_HOUR and flag == False :
                 # 매일경제
                 if key == 'maekyung' :
                     status, maekyung = get_maekyung_msg(d_month, d_day)
@@ -34,7 +50,7 @@ def get_morning_news() :
                 else :
                     dbout('Err. Wrong Key.')
                 time.sleep(1)
-            elif d_hour == 10 :
+            elif d_hour != SEND_HOUR :
                 f_send[key] = False
 
         time.sleep(60)
