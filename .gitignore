@@ -220,4 +220,7 @@ $RECYCLE.BIN/
 .config_secret
 keys.json
 
+# log files
+log/*
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,python,visualstudiocode

@@ -1,0 +1,33 @@
+{
+    "version": 1,
+    "formatters": {
+        "simple": {"format": "[%(name)s] %(message)s"},
+        "complex": {
+            "format": "%(asctime)s %(levelname)s [%(name)s] [%(filename)s:%(lineno)d] - %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "level": "DEBUG"
+        },
+        "file": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": "./log/crawler.log",
+            "when": "D",
+            "backupCount": 10,
+            "encoding":"utf-8",
+            "formatter": "complex",
+            "level": "ERROR"
+        }
+    },
+    "root": {
+        "handlers": ["console", "file"],
+        "level": "WARNING"
+    },
+    "loggers": {
+        "parent": {"level": "INFO"},
+        "parent.child": {"level": "DEBUG"}
+    }
+}

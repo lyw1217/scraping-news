@@ -3,11 +3,8 @@ from slacker import Slacker
 from datetime import datetime
 import json
 import websocket
-import platform
+from app.config import *
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROOT_DIR = os.path.dirname(BASE_DIR)
-SYS_PLATFORM = platform.system()
 if SYS_PLATFORM == 'Linux' or SYS_PLATFORM == 'Drawin':
     SECRETS_PATH = os.path.join(ROOT_DIR, '.config_secret/keys.json')
 elif SYS_PLATFORM == 'Windows' :
