@@ -14,7 +14,7 @@ echo ""
 
 sleep 1
 
-cd /home/leeyw/문서/github/crawling-news
+cd /home/leeyw/Documents/github/crawling-news
 
 echo "> GIT PULL"
 echo ""

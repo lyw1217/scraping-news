@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DIR_PATH="/home/leeyw/Documents/github/crawling-news"
+LOG_PATH="${DIR_PATH}/log"
+LOG_NAME="nohup.log"
+VENV_PATH="${DIR_PATH}/venv/bin"
+EXE_PY="${DIR_PATH}/src/main.py"
+CMD="CRAWLER"
+# sudo check
+#if [ $(id -u) -ne 0 ]; then exec sudo bash "$0" "$@"; exit; fi
+
+echo ""
+echo "-------------------------------------"
+echo "          [ CRAWLER STATUS ]         "
+echo "-------------------------------------"
+echo ""
+
+sleep 0.5
+
+CURRENT_PID=$(pgrep -f ${CMD})
+
+if [ -z "$CURRENT_PID" ]; then
+    echo "> Current Status : $RED[ DOWN ]$NORMAL"
+	echo ""
+else
+    echo "> Current Status : $GREEN[ UP ]$NORMAL"
+	echo "> P I D          : $(pgrep -f ${CMD})"
+	echo ""
+fi
+echo ""
+exit 0
