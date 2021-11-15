@@ -12,35 +12,35 @@ def get_morning_news() :
         # 정해진 시간에 뉴스 전송
         for key, flag in f_send.items() :
             child_logger.debug("< NEWS > running... ")
-            if d_hour == SEND_HOUR and flag == False :
+            if d_hour == SEND_HOUR and flag == True :
                 # 매일경제
                 if key == 'maekyung' :
                     status, maekyung = get_maekyung_msg(d_month, d_day)
                     if status == 200 :
                         dbout('\r\n' + maekyung)
-                        root_logger.info("< NEWS > Success get_maekyung_msg()... ")
+                        parent_logger.info("< NEWS > Success get_maekyung_msg()... ")
                     else :
                         dbout(f'\r\nStatus : {status}\nMessage : {maekyung}\n')
                         root_logger.warning(f'Status : {status}\nMessage : {maekyung}')
-                    f_send[key] = True
+                    f_send[key] = False
 
                 # 한국경제
                 elif key == 'hankyung' :
                     status, hankyung = get_hankyung_issue_today()
                     if status == 200 :
                         dbout('\r\n' + hankyung)
-                        root_logger.info("< NEWS > Success get_hankyung_issue_today()... ")
+                        parent_logger.info("< NEWS > Success get_hankyung_issue_today()... ")
                     else :
                         dbout(f'\r\nStatus : {status}\nMessage : {hankyung}\n')
                         root_logger.warning(f'Status : {status}\nMessage : {hankyung}')
-                    f_send[key] = True
+                    f_send[key] = False
 
                 else :
                     dbout('Err. Wrong Key.')
                     root_logger.warning('< NEWS > Err. Wrong Key.')
                 time.sleep(1)
             elif d_hour != SEND_HOUR :
-                f_send[key] = False
+                f_send[key] = True
 
         time.sleep(60)
 
