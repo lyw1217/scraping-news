@@ -39,7 +39,12 @@ def get_maekyung_msg(d_month, d_day) :
                     html = response.content.decode('euc-kr', 'replace')
                     soup = BeautifulSoup(html, 'html.parser')
                     content = soup.select_one('#content > div.content_left > div.view_txt')
-                    return response.status_code, ('1.' + content.get_text().split('1.')[1])
+                    
+                    # https://stackoverflow.com/questions/32063985/deleting-a-div-with-a-particlular-class-using-beautifulsoup
+                    #content.find('div', {'class':'center_image'}).decompose()  # same way
+                    content.find('div', class_='center_image').decompose()      # same way
+
+                    return response.status_code, content.get_text()
                 else :
                     return response.status_code, 'Err. Failed to get the M.S.G article'
     else :
