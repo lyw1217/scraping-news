@@ -14,7 +14,7 @@
         },
         "file": {
             "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": "./log/crawler.log",
+            "filename": "./log/scraper.log",
             "when": "D",
             "backupCount": 10,
             "encoding":"utf-8",

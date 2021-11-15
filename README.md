@@ -1,4 +1,4 @@
-# crawling-news
+# scraping-news
 python 기반 뉴스 스크래핑
 
 ## 웹 스크래핑(Web Scraping)

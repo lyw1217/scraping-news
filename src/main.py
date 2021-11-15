@@ -44,7 +44,7 @@ def get_morning_news() :
 
         time.sleep(60)
 
-def crawling_news() :
+def scraping_news() :
     th1 = Thread(target=get_morning_news)
 
     th1.start()
@@ -56,4 +56,4 @@ if __name__ == '__main__' :
     root_logger.critical("       < S C R A P E R >    S T A R T       ")
     root_logger.critical("                            written by ywlee")
     root_logger.critical("============================================")
-    crawling_news()
+    scraping_news()
