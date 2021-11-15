@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CMD="CRAWLER"
+CMD="SCRAPER"
 
 # COLOR SET #
 NORMAL="\033[0;0m"
@@ -34,7 +34,7 @@ print_status()
 	PROC_STIME=`date '+%Y/%m/%d %H:%M:%S' -d @$DIFF`
 
 	echo ""
-	echo -e "[$LIGHT_BLUE CRAWLER$NORMAL STATUS ] written by$LIGHT_CYAN YWLEE$NORMAL"
+	echo -e "[$LIGHT_BLUE SCRAPER$NORMAL STATUS ] written by$LIGHT_CYAN YWLEE$NORMAL"
 
 	if [ -z "$PROC_PID" ]; then
 		echo -e "> Current Status : $RED[ DOWN ]$NORMAL"

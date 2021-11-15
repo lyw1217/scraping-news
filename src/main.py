@@ -53,7 +53,7 @@ def crawling_news() :
 if __name__ == '__main__' :
     root_logger.critical("============================================")
     root_logger.critical("")
-    root_logger.critical("       < C R A W L E R >    S T A R T       ")
+    root_logger.critical("       < S C R A P E R >    S T A R T       ")
     root_logger.critical("                            written by ywlee")
     root_logger.critical("============================================")
     crawling_news()

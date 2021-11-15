@@ -7,15 +7,15 @@ with open('requirements.txt', 'r', encoding='utf-8') as f :
     requires = f.read().splitlines()
 
 setup(
-    name='crawling_news',
+    name='scraping_news',
     version='0.0.1',
-    description='crawling news',
+    description='web scraping for news contents',
     long_description=readme,
     install_requires=requires,
     packages=find_packages(),
     classifiers=[
         'Environment :: Console',
-        'Operating System :: POSIZ :: LINUX',
+        'Operating System :: POSIX :: LINUX',
         'Programming Language :: Python :: 3.8.6'
     ]
 )

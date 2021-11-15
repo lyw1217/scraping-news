@@ -1,7 +1,7 @@
 # crawling-news
-python 기반 뉴스 크롤링(스크래핑)
+python 기반 뉴스 스크래핑
 
-## 웹 크롤링(Web Crawling)
+## 웹 스크래핑(Web Scraping)
 
 ## 프로젝트 구성
 
