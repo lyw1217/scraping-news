@@ -47,5 +47,7 @@ def get_maekyung_msg(d_month, d_day) :
                     return response.status_code, content.get_text()
                 else :
                     return response.status_code, 'Err. Failed to get the M.S.G article'
+        
+        return response.status_code, f'No article on {d_month}-{d_day}' # 날짜에 맞는 기사가 없는 경우
     else :
         return response.status_code, 'Err. Failed to get the M.S.G list.'

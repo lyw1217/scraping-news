@@ -26,7 +26,7 @@ def get_morning_news() :
 
                 # 한국경제
                 elif key == 'hankyung' :
-                    status, hankyung = get_hankyung_issue_today()
+                    status, hankyung = get_hankyung_issue_today(d_month, d_day)
                     if status == 200 :
                         dbout('\r\n' + hankyung)
                         parent_logger.info("< NEWS > Success get_hankyung_issue_today()... ")

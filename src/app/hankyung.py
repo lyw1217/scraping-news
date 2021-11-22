@@ -5,7 +5,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def get_hankyung_issue_today() :
+def get_hankyung_issue_today(d_month, d_day) :
     """ 오늘의 Issue Today Preview 조회 """
 
     # 1. Issue Today Preview 조회
@@ -22,8 +22,15 @@ def get_hankyung_issue_today() :
             if '카카오톡으로 공유하세요' in t :
                 txt_list.remove(t)
                 break
-            
-        return response.status_code, '\r\n'.join(txt_list)
+        
+        t_date = txt_list[0].split('.')
+        t_month = int(t_date[1])
+        t_day   = int(t_date[2])
+        
+        if d_month == t_month and d_day == t_day :
+            return response.status_code, '\r\n'.join(txt_list)
+        else :
+            return response.status_code, f'No article on {d_month}-{d_day}' # 날짜에 맞는 기사가 없는 경우
 
     else :
         return response.status_code, 'Err. Failed to get the Issue Today.'
