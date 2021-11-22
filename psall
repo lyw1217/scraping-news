@@ -20,18 +20,8 @@ LIGHT_GREEN="\033[1;7;32m"
 
 print_status()
 {
-	# PROC_CMD
-	PROC_CMD=$(ps -eo args | grep ${CMD} | grep -v grep | grep -v more | grep -v rm | grep -v cat | grep -v vi | grep -v vim | grep -v tail | grep -v awk)
-
 	# PID
 	PROC_PID=$(pgrep -f ${CMD})
-
-	# UPTIME
-	STARTTIME=$(awk '{print int($22 / 100)}' /proc/$PROC_PID/stat)
-	UPTIME=$(awk '{print int($1)}' /proc/uptime)
-	NOW=$(date +%s)
-	DIFF=$((NOW - (UPTIME - STARTTIME)))
-	PROC_STIME=`date '+%Y/%m/%d %H:%M:%S' -d @$DIFF`
 
 	echo ""
 	echo -e "[$LIGHT_BLUE SCRAPER$NORMAL STATUS ] written by$LIGHT_CYAN YWLEE$NORMAL"
@@ -40,6 +30,15 @@ print_status()
 		echo -e "> Current Status : $RED[ DOWN ]$NORMAL"
 		echo ""
 	else
+		# PROC_CMD
+		PROC_CMD=$(ps -eo args | grep ${CMD} | grep -v grep | grep -v more | grep -v rm | grep -v cat | grep -v vi | grep -v vim | grep -v tail | grep -v awk)
+
+		# UPTIME
+		STARTTIME=$(awk '{print int($22 / 100)}' /proc/$PROC_PID/stat)
+		UPTIME=$(awk '{print int($1)}' /proc/uptime)
+		NOW=$(date +%s)
+		DIFF=$((NOW - (UPTIME - STARTTIME)))
+		PROC_STIME=`date '+%Y/%m/%d %H:%M:%S' -d @$DIFF`
 		echo ""
 		echo -e "> Current Status : $GREEN[ UP ]$NORMAL"
 		echo    "> PID            : $(pgrep -f ${CMD})"
