@@ -19,7 +19,7 @@
             "backupCount": 10,
             "encoding":"utf-8",
             "formatter": "complex",
-            "level": "ERROR"
+            "level": "INFO"
         }
     },
     "root": {
