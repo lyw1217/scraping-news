@@ -32,8 +32,10 @@ else
     kill -15 $CURRENT_PID
 	sleep 0.5
 	
-	for cnt in {1..${WAIT_TIME}}
+	cnt=0
+	for (( ; ; ))
 	do
+		let cnt+=1
 		CURRENT_PID=$(pgrep -f ${CMD})
 		if [ -z "$CURRENT_PID" ]; then
 			echo "> 어플리케이션 종료 성공!"
@@ -42,7 +44,7 @@ else
 		fi
 		sleep 0.5
 		
-		if [ ${cnt} == ${WAIT_TIME} ]; then
+		if [ ${cnt} -eq ${WAIT_TIME} ]; then
 			echo "> 어플리케이션 종료 실패.. 다시 시도하세요"
 			echo ""
 			exit 1
