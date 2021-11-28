@@ -28,9 +28,9 @@ def get_hankyung_issue_today(d_month, d_day) :
         t_day   = int(t_date[2])
         
         if d_month == t_month and d_day == t_day :
-            return response.status_code, '\r\n'.join(txt_list)
+            return response.status_code, '\r\n\n'.join(txt_list)
         else :
-            return response.status_code, f'No article on {d_month}-{d_day}' # 날짜에 맞는 기사가 없는 경우
+            return response.status_code, f'No HK article on {d_month}-{d_day}' # 날짜에 맞는 기사가 없는 경우
 
     else :
         return response.status_code, 'Err. Failed to get the Issue Today.'
