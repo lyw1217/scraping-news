@@ -30,7 +30,7 @@ def get_maekyung_msg(d_month, d_day) :
 
         # 2. 날짜에 맞는 글 조회
         for i, news in news_dict.items() :
-            if f'{d_month}월 {d_day}일' in news['title'] :
+            if f'{d_month}월' and f'{d_day}일' in news['title'] :
                 content_url = news['url']
                 time.sleep(0.1)
                 response = requests.get(content_url, headers={'User-Agent': 'Mozilla/5.0'})
